@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us - Sights of Sevins</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  * { box-sizing: border-box; font-family: Arial, sans-serif; margin: 0; padding: 0; }
+  body { background: #0c0c0c; color: #fff; }
+  .contact-container { max-width: 600px; margin: 50px auto; padding: 30px; background: #1a1a1a; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,.6); }
+  h2 { text-align: center; margin-bottom: 20px; color: #ff5a3c; }
+  form { display: flex; flex-direction: column; gap: 15px; }
+  input, textarea { padding: 14px; border-radius: 10px; border: none; background: #222; color: #fff; font-size: 14px; }
+  input:focus, textarea:focus { outline: 2px solid #ff5a3c; }
+  button { padding: 14px; background: #25D366; color: #000; border: none; border-radius: 50px; font-weight: 600; cursor: pointer; transition: 0.3s; }
+  button:hover { background: #fff; }
+  .info { margin-top: 20px; text-align: center; font-size: 14px; color: #aaa; }
+  .info i { color: #25D366; margin-right: 8px; }
+  @media (max-width: 480px) { .contact-container { margin: 20px; padding: 20px; } }
+</style>
+</head>
+<body>
+
+<div class="contact-container">
+  <h2>Contact Us</h2>
+
+  <form id="whatsappForm">
+    <input type="text" id="name" placeholder="Your Name" required>
+    <input type="email" id="email" placeholder="Your Email" required>
+    <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+    <button type="submit"><i class="fab fa-whatsapp"></i> Send via WhatsApp</button>
+  </form>
+
+  <div class="info">
+    <p><i class="fab fa-whatsapp"></i> WhatsApp: +233XXXXXXXXX</p>
+    <p>We respond fast! 👋</p>
+  </div>
+</div>
+
+<script>
+document.getElementById("whatsappForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const message = document.getElementById("message").value;
+
+  const text = `Hello Sights of Sevins 👋
+Name: ${name}
+Email: ${email}
+Message: ${message}`;
+
+  const url = `https://wa.me/233XXXXXXXXX?text=${encodeURIComponent(text)}`;
+  window.open(url, "_blank");
+});
+</script>
+
+</body>
+</html>

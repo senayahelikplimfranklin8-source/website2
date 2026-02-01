@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Shop</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* RESET */
+* { box-sizing:border-box; margin:0; padding:0; font-family:Poppins, sans-serif; }
+body.dark { background:#0f0f0f; color:#fff; }
+body.light { background:#f5f5f5; color:#111; }
+
+/* NAVBAR */
+.navbar {
+  height:70px;
+  background:#000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+.nav-center video { height:45px; }
+.nav-left, .nav-right {
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+}
+.nav-left { left:20px; }
+.nav-right { right:20px; display:flex; gap:18px; }
+.nav-right i, .nav-left i {
+  font-size:22px;
+  cursor:pointer;
+}
+#cartCount {
+  position:absolute;
+  top:-6px;
+  right:-8px;
+  background:#ff4d30;
+  color:#fff;
+  font-size:11px;
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* FILTERS */
+.filters {
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:center;
+  padding:25px 15px;
+}
+.filters button {
+  padding:10px 22px;
+  border-radius:50px;
+  border:none;
+  background:#ff4d30;
+  color:#fff;
+  cursor:pointer;
+}
+.filters button.active {
+  background:#fff;
+  color:#000;
+}
+
+/* PRODUCTS GRID */
+.products {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+  gap:22px;
+  padding:0 20px 60px;
+}
+
+/* CARD */
+.card {
+  background:#1b1b1b;
+  border-radius:14px;
+  padding:12px;
+  text-align:center;
+}
+body.light .card { background:#fff; }
+
+.card img {
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  border-radius:12px;
+}
+
+.card h4 { margin:12px 0 4px; }
+.card p { opacity:.8; margin-bottom:8px; }
+
+/* COLORS */
+.colors {
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin:10px 0;
+}
+.color {
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  border:2px solid #fff;
+  cursor:pointer;
+}
+.color.active { outline:2px solid #ff4d30; }
+
+/* QTY */
+.qty {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
+  margin:12px 0;
+}
+.qty button {
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  border:none;
+  font-size:18px;
+  cursor:pointer;
+}
+
+/* ADD CART */
+.add {
+  padding:10px 24px;
+  border-radius:50px;
+  border:none;
+  background:#ff4d30;
+  color:#fff;
+  cursor:pointer;
+}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+  .card img { height:180px; }
+}
+</style>
+</head>
+
+<body class="dark">
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="nav-left" onclick="history.back()">
+    <i class="fas fa-arrow-left"></i>
+  </div>
+
+  <div class="nav-center">
+    <video autoplay muted loop playsinline>
+      <source src="/animation/VID_20251223_091939_595.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="nav-right">
+    <div style="position:relative" onclick="location.href='cart.html'">
+      <i class="fas fa-shopping-cart"></i>
+      <span id="cartCount">0</span>
+    </div>
+    <i class="fas fa-adjust" onclick="toggleMode()"></i>
+  </div>
+</header>
+
+<!-- FILTERS -->
+<div class="filters">
+  <button class="active" onclick="filter('All', this)">All</button>
+  <button onclick="filter('Jersey', this)">Jersey</button>
+  <button onclick="filter('Pants', this)">Pants</button>
+  <button onclick="filter('Hoodie', this)">Hoodie</button>
+</div>
+
+<!-- PRODUCTS -->
+<div class="products" id="products"></div>
+
+<script>
+const productsData = [
+  {id:1, name:"Red Jersey", price:25, cat:"Jersey", img:"/images/jersey1.jpg"},
+  {id:2, name:"Black Pants", price:35, cat:"Pants", img:"/images/pants1.jpg"},
+  {id:3, name:"Grey Hoodie", price:45, cat:"Hoodie", img:"/images/hoodie1.jpg"},
+  {id:4, name:"Classic Jersey", price:30, cat:"Jersey", img:"/images/jersey2.jpg"}
+];
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function render(list){
+  const box = document.getElementById("products");
+  box.innerHTML = "";
+
+  list.forEach(p=>{
+    box.innerHTML += `
+    <div class="card">
+      <img src="${p.img}">
+      <h4>${p.name}</h4>
+      <p>$${p.price}</p>
+
+      <div class="colors">
+        <div class="color active" style="background:black" onclick="pickColor(this)"></div>
+        <div class="color" style="background:red" onclick="pickColor(this)"></div>
+        <div class="color" style="background:grey" onclick="pickColor(this)"></div>
+      </div>
+
+      <div class="qty">
+        <button onclick="changeQty(${p.id}, -1)">−</button>
+        <span id="qty-${p.id}">1</span>
+        <button onclick="changeQty(${p.id}, 1)">+</button>
+      </div>
+
+      <button class="add" onclick="addToCart(${p.id})">Add to Cart</button>
+    </div>
+    `;
+  });
+}
+
+function pickColor(el){
+  el.parentElement.querySelectorAll(".color").forEach(c=>c.classList.remove("active"));
+  el.classList.add("active");
+}
+
+function changeQty(id, val){
+  const el = document.getElementById(`qty-${id}`);
+  let qty = +el.textContent + val;
+  if(qty < 1) qty = 1;
+  el.textContent = qty;
+}
+
+function addToCart(id){
+  const p = productsData.find(x=>x.id===id);
+  const qty = +document.getElementById(`qty-${id}`).textContent;
+  cart.push({...p, qty});
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCart();
+  alert("Added to cart ✅");
+}
+
+function updateCart(){
+  document.getElementById("cartCount").textContent =
+    cart.reduce((a,b)=>a+b.qty,0);
+}
+
+function filter(cat, btn){
+  document.querySelectorAll(".filters button").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  render(cat==="All" ? productsData : productsData.filter(p=>p.cat===cat));
+}
+
+function toggleMode(){
+  document.body.classList.toggle("light");
+  document.body.classList.toggle("dark");
+}
+
+render(productsData);
+updateCart();
+</script>
+
+</body>
+</html>

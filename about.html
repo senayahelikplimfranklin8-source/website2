@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>About — Sights of SEVIN</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Poppins, sans-serif;
+}
+
+body {
+  background:#0b0b0b;
+  color:#fff;
+  line-height:1.7;
+}
+
+/* NAVBAR */
+.navbar {
+  height:70px;
+  background:#000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+.nav-left, .nav-right {
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+}
+.nav-left { left:20px; }
+.nav-right { right:20px; }
+.nav-left i, .nav-right i {
+  font-size:22px;
+  cursor:pointer;
+}
+.nav-center video {
+  height:46px;
+}
+
+/* HERO */
+.hero {
+  min-height:90vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:40px 20px;
+  text-align:center;
+  position:relative;
+}
+.hero::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at center, rgba(255,255,255,0.05), #000 70%);
+}
+.hero-content {
+  position:relative;
+  max-width:900px;
+}
+.hero h1 {
+  font-size:48px;
+  margin-bottom:20px;
+  letter-spacing:1px;
+}
+.hero p {
+  font-size:20px;
+  opacity:.85;
+}
+
+/* SECTIONS */
+.section {
+  max-width:1100px;
+  margin:auto;
+  padding:100px 20px;
+}
+.section h2 {
+  font-size:34px;
+  margin-bottom:25px;
+}
+.section p {
+  font-size:18px;
+  opacity:.85;
+}
+
+/* SPLIT */
+.split {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:50px;
+  align-items:center;
+}
+.split img {
+  width:100%;
+  border-radius:20px;
+}
+
+/* VALUES */
+.values {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+  margin-top:50px;
+}
+.value {
+  background:#141414;
+  padding:30px;
+  border-radius:18px;
+}
+.value i {
+  font-size:32px;
+  margin-bottom:15px;
+  color:#ff4d30;
+}
+.value h4 {
+  margin-bottom:10px;
+}
+
+/* FOUNDATION */
+.foundation {
+  background:#000;
+  text-align:center;
+  padding:100px 20px;
+}
+.foundation h2 {
+  font-size:36px;
+  margin-bottom:25px;
+}
+.foundation p {
+  max-width:850px;
+  margin:auto;
+  font-size:18px;
+  opacity:.85;
+}
+
+/* CTA */
+.cta {
+  text-align:center;
+  padding:100px 20px;
+}
+.cta h2 {
+  font-size:36px;
+  margin-bottom:25px;
+}
+.cta button {
+  padding:16px 44px;
+  border:none;
+  border-radius:50px;
+  background:#ff4d30;
+  color:#fff;
+  font-size:16px;
+  cursor:pointer;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .split { grid-template-columns:1fr; }
+  .hero h1 { font-size:36px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="nav-left" onclick="history.back()">
+    <i class="fas fa-arrow-left"></i>
+  </div>
+
+  <div class="nav-center">
+    <video autoplay muted loop playsinline>
+      <source src="/animation/VID_20251223_091939_595.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="nav-right" onclick="location.href='shop.html'">
+    <i class="fas fa-store"></i>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Sights of SEVIN</h1>
+    <p>
+      A cultural movement shaped by art, impact, and identity.
+    </p>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="section">
+  <p>
+    Sights of SEVIN is a cultural movement shaped by art, impact, and identity.
+    We create at the intersection of spirit and purpose, using fashion,
+    visuals, and storytelling to awaken consciousness and empower communities.
+    Our work is a reminder that culture isn’t fixed; it shifts, rises, and becomes.
+  </p>
+</section>
+
+<!-- PURPOSE -->
+<section class="section split">
+  <div>
+    <h2>A Culture in Motion</h2>
+    <p>
+      We exist to build an ecosystem where creativity fuels change.
+      Through creation, collaboration, and community, we craft work
+      that carries history, emotion, and truth. Everything we make
+      reflects a generation in motion.
+    </p>
+  </div>
+  <img src="/image/section 2.jpg" alt="Sights of SEVIN Vision">
+</section>
+
+<!-- VALUES -->
+<section class="section">
+  <h2>What We Stand For</h2>
+  <div class="values">
+    <div class="value">
+      <i class="fas fa-eye"></i>
+      <h4>Vision</h4>
+      <p>Seeing beyond trends into meaning, identity, and legacy.</p>
+    </div>
+    <div class="value">
+      <i class="fas fa-fire"></i>
+      <h4>Becoming</h4>
+      <p>Culture evolves. So do we. Growth is our language.</p>
+    </div>
+    <div class="value">
+      <i class="fas fa-users"></i>
+      <h4>Community</h4>
+      <p>Creation is stronger when it’s shared.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDATION -->
+<section class="foundation">
+  <h2>Sights of SEVIN Foundation</h2>
+  <p>
+    Sights of SEVIN is the house of creation: collections, exhibitions,
+    collaborations, and visual worlds rooted in our philosophy of becoming.
+    Alongside it stands the Sights of SEVIN Foundation — our impact arm
+    focused on education, empowerment, and building opportunities for
+    young African creators.
+  </p>
+</section>
+
+<!-- BELIEF -->
+<section class="cta">
+  <h2>Built on Purpose</h2>
+  <p style="max-width:850px;margin:0 auto 35px;opacity:.85;">
+    At our core is a belief: art can move people, culture can grow,
+    and purpose can build futures. Sights of SEVIN is a culture of becoming,
+    built to inspire movement, spirit, and change.
+  </p>
+  <button onclick="location.href='shop.html'">Explore the Movement</button>
+</section>
+
+</body>
+</html>

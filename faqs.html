@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQs - Sights of Sevins</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  * { box-sizing: border-box; font-family: Arial, sans-serif; margin:0; padding:0; }
+  body { background: #0c0c0c; color: #fff; }
+  .faq-container { max-width: 800px; margin: 50px auto; padding: 30px; background: #1a1a1a; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,.6); }
+  h2 { text-align: center; margin-bottom: 30px; color: #ff5a3c; }
+  .faq { border-bottom: 1px solid #333; }
+  .faq-question { cursor: pointer; padding: 18px; font-size: 16px; position: relative; }
+  .faq-question i { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); transition: transform 0.3s; }
+  .faq-answer { max-height: 0; overflow: hidden; padding: 0 18px; font-size: 14px; color: #aaa; transition: max-height 0.3s ease; }
+  .faq.active .faq-answer { max-height: 200px; padding: 12px 18px; }
+  .faq.active .faq-question i { transform: translateY(-50%) rotate(45deg); }
+  @media (max-width: 480px) { .faq-container { margin: 20px; padding: 20px; } }
+</style>
+</head>
+<body>
+
+<div class="faq-container">
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="faq">
+    <div class="faq-question">How can I place an order? <i class="fas fa-plus"></i></div>
+    <div class="faq-answer">You can browse our shop, add items to your cart, and complete checkout to place an order.</div>
+  </div>
+
+  <div class="faq">
+    <div class="faq-question">Do you ship internationally? <i class="fas fa-plus"></i></div>
+    <div class="faq-answer">Yes, we ship worldwide. Shipping costs and times vary depending on location.</div>
+  </div>
+
+  <div class="faq">
+    <div class="faq-question">What payment methods are accepted? <i class="fas fa-plus"></i></div>
+    <div class="faq-answer">We accept mobile money, bank transfer, and card payments via our secure payment gateway.</div>
+  </div>
+
+  <div class="faq">
+    <div class="faq-question">How do I track my order? <i class="fas fa-plus"></i></div>
+    <div class="faq-answer">After checkout, you will receive a tracking number via WhatsApp or email to track your order status.</div>
+  </div>
+
+  <div class="faq">
+    <div class="faq-question">Can I return or exchange items? <i class="fas fa-plus"></i></div>
+    <div class="faq-answer">Yes, we have a 7-day return/exchange policy for eligible items. Contact us via WhatsApp to initiate a return.</div>
+  </div>
+</div>
+
+<script>
+document.querySelectorAll('.faq-question').forEach(q => {
+  q.addEventListener('click', () => {
+    const parent = q.parentElement;
+    parent.classList.toggle('active');
+  });
+});
+</script>
+
+</body>
+</html>

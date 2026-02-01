@@ -1,0 +1,161 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive Burger Menu</title>
+
+  <!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="styles/main.css" />
+</head>
+<body>
+
+<!-- 🔴 MOVING BANNER -->
+<div class="top-banner">
+  <div class="banner-track">
+    <span>🔥 BUY NOW 🔥</span>
+    <span>🔥 BUY NOW 🔥</span>
+    <span>🔥 BUY NOW 🔥</span>
+    <span>🔥 BUY NOW 🔥</span>
+        <span>🔥 BUY NOW 🔥</span>
+  </div>
+</div>
+
+
+
+<header class="navbar">
+  <!-- Left: Hamburger -->
+  <div class="nav-left">
+    <i class="fas fa-bars" id="menu-btn"></i>
+  </div>
+
+  <!-- Center: Video Logo -->
+  <div class="nav-center">
+    <video autoplay muted loop playsinline>
+      <source src="animation/loader.json" type="video/mp4">
+    </video>
+  </div>
+
+
+
+  <!-- Right: Icons -->
+  <div>
+  <!-- User Icon -->
+<i class="fas fa-user" onclick="window.location.href='account/account.php'"></i>
+
+  <!-- Cart Icon -->
+<i class="fas fa-shopping-cart" onclick="window.location.href='cart/cart.php'"></i>
+
+</div>
+
+
+
+
+</header>
+
+<!-- Side Menu -->
+<nav class="side-menu" id="sideMenu">
+  <i class="fas fa-times close-btn" id="close-btn"></i>
+  <ul>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="shop.html">Shop</a></li>
+  </ul>
+</nav>
+
+
+
+<!--VIDEO-->
+<section class="hero-video">
+  <video autoplay muted loop playsinline>
+    <source src="video/promo.mp4" type="video/mp4">
+  </video>
+
+  <div class="hero-content">
+    <a href="new-arrival.html">
+  <button class="shop-btn">New Arrival</button>
+</a>
+
+
+
+  </div>
+</section>
+
+
+<section class="shop-all-section">
+  <img src="image/section 1.jpeg" alt="Shop All Background" class="shop-bg">
+
+  <div class="shop-overlay">
+    <a href="Shop.html">
+  <button class="shop-btn">Shop All</button>
+</a>
+
+  </div>
+</section>
+
+
+<section class="shop-section-alt auto-height">
+  <img src="image/section 2.jpg" class="shop-alt-bg">
+  <div class="shop-alt-content">
+    <a href="shop.html">
+  <button class="shop-btn">Shop</button>
+</a>
+
+  </div>
+</section>
+
+
+
+<footer class="lux-footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <h2>Sight of Sevins</h2>
+      <p>Crafted for those who move different.</p>
+    </div>
+
+    <div class="footer-links">
+      <div>
+        <h4>Shop</h4>
+        <a href="new-arrival.html">New Arrivals</a>
+        <a href="Shop.html">Collections</a>
+      </div>
+
+      <div>
+        <h4>Company</h4>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <div>
+        <h4>Support</h4>
+        <a href="faqs.html">FAQs</a>
+        <a href="#">Shipping</a>
+        <a href="#">Returns</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-divider"></div>
+
+  <div class="footer-bottom">
+    <p>© 2025 Sights of Sevians. All rights reserved.</p>
+
+    <div class="footer-socials">
+      <i class="fab fa-instagram"></i>
+      <i class="fab fa-x-twitter"></i>
+      <i class="fab fa-tiktok"></i>
+      <i class="fab fa-facebook-f"></i>
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="script/main.js"></script>
+</body>
+</html>
